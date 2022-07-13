@@ -8,6 +8,7 @@ const initialState = {
 		number: "+1",
 		src: "https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of_the_United_States.png",
 	},
+	inputFocus: false,
 };
 
 const countryCodeSlice = createSlice({
@@ -20,8 +21,12 @@ const countryCodeSlice = createSlice({
 		setSelectedCountry: (state, action) => {
 			state.selectedCountry = action.payload;
 		},
+		setInputFocus: (state, action) => {
+			state.inputFocus = action.payload;
+		},
 	},
 });
 
-export const { setShowDropdown, setSelectedCountry } = countryCodeSlice.actions;
+export const { setShowDropdown, setSelectedCountry, setInputFocus } =
+	countryCodeSlice.actions;
 export default countryCodeSlice;

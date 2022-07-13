@@ -1,5 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setInputFocus, setShowDropdown } from "../redux/countryCodeSlice";
 import CountryButton from "./CountryButton";
 import DropDown from "./DropDown";
 
@@ -45,6 +46,7 @@ const data = [
 ];
 
 const InputForm = () => {
+	const dispatch = useDispatch();
 	const showDropDown = useSelector(
 		(state) => state.countryCodeSlice.showDropdown
 	);
@@ -53,25 +55,42 @@ const InputForm = () => {
 		(state) => state.countryCodeSlice.selectedCountry
 	);
 
+	const inputFocus = useSelector(
+		(state) => state.countryCodeSlice.inputFocus
+	);
+
 	return (
-		<div className="inputForm">
-			<div className={`form ${showDropDown ? "focus" : ""}`}>
+		<div
+			className="inputForm"
+			onBlur={() => {
+				dispatch(setInputFocus(false));
+				dispatch(setShowDropdown(false));
+			}}>
+			<div className={`form ${inputFocus ? "focus" : ""}`}>
 				<div className="form-heading">Phone Number</div>
 				<div className="form-InputDiv">
 					<CountryButton data={selectedCountry} />
 					<input
 						type="number"
 						placeholder="10-digit Number"
-
 						onChange={(e) => {
 							if (e.target.value.length >= 10) {
 								e.target.value = e.target.value.slice(0, 10);
+								// dispatch(setInputFocus(false));
 							} else {
 								e.target.value = e.target.value.slice(
 									0,
 									e.target.value.length
 								);
 							}
+						}}
+						onFocus={() => {
+							dispatch(setInputFocus(true));
+							// dispatch(setShowDropdown(true));
+						}}
+						onBlur={() => {
+							dispatch(setInputFocus(false));
+							// dispatch(setShowDropdown(false));
 						}}
 					/>
 				</div>
