@@ -1,0 +1,25 @@
+.btn-div {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	cursor: pointer;
+}
+
+.btn {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.btn-img {
+	width: 40px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 3px;
+	margin-right: 10px;
+}

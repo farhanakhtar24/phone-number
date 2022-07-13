@@ -1,0 +1,9 @@
+.dropDown {
+	background-color: white;
+	border-radius: 5px;
+	padding: 8px;
+	width: 27%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
